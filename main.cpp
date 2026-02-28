@@ -253,16 +253,34 @@ double calc(vector<Token>& postfixTokens){
                 }
                 stack.push_back(sqrt(operand));
             } else if (token.value == "log") {
+                if(operand <= 0){
+                    throw runtime_error("Log of non-positive number");
+                }
                 stack.push_back(log10(operand));
             } else if (token.value == "ln") {
+                if(operand <= 0){
+                    throw runtime_error("Log of non-positive number");
+                }
                 stack.push_back(log(operand));
             } else if (token.value == "arcsen") {
+                if(operand < -1 || operand > 1){
+                    throw runtime_error("Arcsen of number out of range");
+                }
                 stack.push_back(asin(operand));
             } else if (token.value == "arcsend") {
+                if(operand < -1 || operand > 1){
+                    throw runtime_error("Arcsen of number out of range");
+                }
                 stack.push_back(asin(operand) * 180.0 / PI);
             } else if (token.value == "arccos") {
+                if(operand < -1 || operand > 1){
+                    throw runtime_error("Arcsen of number out of range");
+                }
                 stack.push_back(acos(operand));
             } else if (token.value == "arccosd") {
+                if(operand < -1 || operand > 1){
+                    throw runtime_error("Arcsen of number out of range");
+                }
                 stack.push_back(acos(operand) * 180.0 / PI);
             } else if (token.value == "arctan") {
                 stack.push_back(atan(operand));
